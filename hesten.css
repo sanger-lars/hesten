@@ -1,0 +1,82 @@
+
+h1 {font-size: 1.5rem;}
+h2 {font-size: 1.3rem;}
+
+.logo img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 40%;
+	height: auto;
+}
+
+.wrapper {
+	padding: 5px;
+
+}
+
+.tittel {
+	text-align: center;
+}
+
+.overskrift {
+	text-align: center;
+}
+
+.arangement {
+	border: 1px solid black;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.arangement img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 100%;
+	height: auto;
+	padding-bottom: 5px;
+}
+
+#her {
+	width: 100%;
+	display: block;
+}
+
+#deltag {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 2rem;
+
+}
+
+#deltagere {
+	width: 300px;
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 1.3rem;
+}
+
+@media screen and (min-width: 668px) {
+	.wrapper  {
+		width: 500px;
+		display: block;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+
+	.logo img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 40%;
+	height: auto;
+}
+}
