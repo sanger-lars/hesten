@@ -10,8 +10,12 @@
 	}
 
 	function hent_alle($filename, $fra) {
-	  	$fil = file_get_contents($filename, true);
-		echo $fil;
+	  	$fil = @file_get_contents($filename, true);
+	  	if ($fil === false) {
+	  		echo "";
+	  	} else {
+			echo $fil;
+	  	}
 
 	  	exit();    
     	

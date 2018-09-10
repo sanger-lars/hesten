@@ -10,11 +10,14 @@ function hent_tal_fra_DB(fra) {
     alle: fra
   })
   .done(function (data) {
-  	alle_data = JSON.parse(data);
-    if (alle_data != null) {
-  	for (var t=0;t < alle_data.length; t++) {
-  		her.insertAdjacentHTML('beforeend', alle_data[t]);
-  	}}
+    debugger;
+    if (!data == "") {
+      alle_data = JSON.parse(data);
+      if (alle_data != null) {
+      for (var t=2;t < alle_data.length; t++) {
+        her.insertAdjacentHTML('beforeend', alle_data[t]);
+      }}
+    }
   })
   .fail(function () {
   	alert('fail');
