@@ -4,9 +4,17 @@
 	
 	$filename = "lars.json";
 
+
 	if(isset($_POST['alle'])){
 		// $filename = "lars.json";
-	    hent_alle($filename, $_POST['alle']);
+		if ($_POST['alle'] > 0) {
+			$fra = $_POST['alle'];
+			
+			filter_events();
+		} else {
+			hent_alle($filename, $_POST['alle']);
+		}
+	    
 	}
 
 	function hent_alle($filename, $fra) {
@@ -19,6 +27,32 @@
 
 	  	exit();    
     	
+	}
+	
+	function filter_events() {
+		function array_ok($var) {
+		    global $fra;
+			if ($fra <= substr($var , 9, 10)) {
+			  
+			  return true;
+			} else {
+				return false;
+			}
+		}
+		
+	    $jsondata = @file_get_contents("lars.json", true);
+		if ($jsondata === false) {
+			echo "fejl";
+		}
+		else {
+			$data = json_decode($jsondata);
+			$data2 = array_slice($data, 2);
+		    $data3 = array_filter($data2, "array_ok");
+		    array_unshift($data3, $data[0], $data[1]);
+			$jsondata = json_encode($data3);
+			
+			echo $jsondata;
+		}
 	}
 
 function test() {
