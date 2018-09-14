@@ -56,6 +56,8 @@ h2 {font-size: 1.3rem;}
 
 }
 
+#deltag:hover {background-color: #3b8f08;}
+
 #deltagere {
 	width: 300px;
 	margin: auto;
@@ -79,4 +81,44 @@ h2 {font-size: 1.3rem;}
 	width: 40%;
 	height: auto;
 }
+}
+
+/*
+    Modal styles
+*/
+
+.modal.open {
+    display: flex;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    padding: 10vh 0;
+}
+
+.modal .container {
+    background-color: white;
+    border-radius: 0.25rem;
+    width: 50vw;
+    padding: 2rem;
+    position: relative;
+}
+
+.modal .close-button {
+    font-size: 150%;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.5rem;
 }

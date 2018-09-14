@@ -1,40 +1,6 @@
 <?php 
 require_once('../../sne/Lars.php');
 
-function lav_cook($key, $vall) {
-	$lars = hent_cook($key);
-	if ($lars == "") {
-		$mysqli = connectToDB();
-		$query = "INSERT INTO  `lars_f_dk`.`cook` (`key`,`val`) VALUES ('$key','$vall')";
-		$result = mysqli_query($mysqli, $query);
-	    $mysqli->close();
-	} else {
-		$mysqli = connectToDB();
-		$query = "UPDATE `cook` SET `key`='$key',`val`='$vall' WHERE 1";
-		
-		$result = mysqli_query($mysqli, $query);
-	    $mysqli->close();
-	}
-	
-}
-
-function hent_cook($key) {
-	
-	$mysqli = connectToDB();
-	$query = "SELECT `val` FROM `lars_f_dk`.`cook` WHERE `key`='$key'";
-	$result = mysqli_query($mysqli, $query);
-	$resultCheck = mysqli_num_rows($result);
-	if ($resultCheck >= 1) {
-	    if ($row = mysqli_fetch_assoc($result)) {
-	      return $row['val'];
-	    }    
-	} else {
-		return "";
-	}
-    $mysqli->close();
-}
-
-
 function streng_plus($streng, $plus_tal) {
 	$p1 = strpos($streng, "_");
 	$tal = substr($streng, $p1+1, 2) +$plus_tal;
@@ -63,10 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$errors[] = 'Extension not allowed: ' . $file_name . ' ' . $file_type;
 			}
 
-			if ($file_size > 2097152) {
-				$errors[] = 'File size exceeds limit: ' . $file_name . ' ' . $file_type;
-			}
-
 			if (empty($errors)) {
 				$jsondata = @file_get_contents("lars.json", true);
 				if ($jsondata === false) {
@@ -81,14 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$file = $path . $nyt_img_nr . "." . $file_ext;
 				$data[0] = $nyt_img_nr;
 				$data[1] = $file_ext;
-				if (move_uploaded_file($file_tmp, $file)) {
+				$ok = move_uploaded_file($file_tmp, $file);
+				sleep(2);
+				if ($ok) {
 					$jsondata = json_encode($data);
 					file_put_contents("lars.json", $jsondata);
-				}
-
-
-				
-				
+					
+				} else {
+					echo $file;
+				}		
 			}
 		}
 

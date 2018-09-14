@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		
 		$filename = "lars.json";
-		$jsondata = file_get_contents($filename, true);
-		if (empty($jsondata)) {
+		$jsondata = @file_get_contents("lars.json", true);
+		if ($jsondata === false) {
 			//error
-			exit;
-		}
-		else {
+			echo "<h1> Error get file </h1>";
+			
+		} else {
 			$data = json_decode($jsondata);
 			$img_nr = $data[0]. "." . $data[1];
 
@@ -43,15 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			if ($billede === "true") {
 				$html = $html.'<img src="uploads/'.$img_nr.'">';
 			}
-			$html = $html . $tekst . '<div id="deltagere">Deltagere: '.$deltagere.' <a href="#" id ="deltag">Deltag</a> </div>
+			$html = $html . $tekst . '<div id="deltagere">Deltagere: '.$deltagere.' <a id ="deltag">Deltag</a> </div>
 			</div>';
 
 			array_push($data, $html);
 			$jsondata = json_encode($data);
-			file_put_contents($filename, $jsondata);
-
-	    	$fil = file_get_contents($filename, true);
-	    	echo $html;
+			$saved_file = file_put_contents($filename, $jsondata);
+			if (($saved_file === false) || ($saved_file == -1)) {
+				// error
+				echo "<h1> Error put file </h1>";
+			} else {
+				echo $html;
+			}
 		}
 	}
 }
