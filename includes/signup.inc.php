@@ -1,20 +1,20 @@
 <?php 
-require_once('../../sne/Lars.php');
-function hent_cook($key) {
-	
-	$mysqli = connectToDB();
-	$query = "SELECT `val` FROM `lars_f_dk`.`cook` WHERE `key`='$key'";
-	$result = mysqli_query($mysqli, $query);
-	$resultCheck = mysqli_num_rows($result);
-	if ($resultCheck >= 1) {
-		$data = array();
-	    if ($row = mysqli_fetch_assoc($result)) {
-	      return $row['val'];
-	    }    
-	} else {
-		return "";
+// require_once('../../sne/Lars.php');		
+
+function sorter_events() {
+	$jsondata = @file_get_contents("lars.json", true);
+	if ($jsondata === false) {
+		return "fejl";
 	}
-    $mysqli->close();
+	else {
+		$data = json_decode($jsondata);
+		$data2 = array_slice($data, 2);
+		sort($data2);
+		array_unshift($data2, $data[0], $data[1]);
+		$jsondata = json_encode($data2);
+		file_put_contents("lars.json", $jsondata);
+		return $jsondata;
+	}
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -36,25 +36,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		} else {
 			$data = json_decode($jsondata);
 			$img_nr = $data[0]. "." . $data[1];
-
+			$tekst = nl2br($tekst);
+			$date=date_create($id);
+			$date = date_format($date,"d-m-Y");
 		
 			$html = '<div id="'.$id.'" class="arangement">
+			<div><h2>Dato: '.$date.'</h2></div>
 			<div class="overskrift"><h2>'.$overskrift.'</h2></div>';
 			if ($billede === "true") {
 				$html = $html.'<img src="uploads/'.$img_nr.'">';
 			}
 			$html = $html . $tekst . '<div id="deltagere">Deltagere: '.$deltagere.' <a id ="deltag">Deltag</a> </div>
 			</div>';
-
+			   
+			/* <script type="text/javascript">
+    			alert("Der er allerede en begivenhed på <?php echo $id; ?> vil du erstatte den ? ");
+ 
+  			</script>
+			$fundet = false;
+			for ($i=2; $i < count($data); $i++) { 
+				if (strpos($data[$i], $id) > 0) {
+					$fundet = true;
+					break;
+				}
+			}*/
 			array_push($data, $html);
 			$jsondata = json_encode($data);
 			$saved_file = file_put_contents($filename, $jsondata);
-			if (($saved_file === false) || ($saved_file == -1)) {
-				// error
-				echo "<h1> Error put file </h1>";
-			} else {
-				echo $html;
-			}
+			$jsondata = sorter_events();
 		}
 	}
 }

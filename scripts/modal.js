@@ -5,7 +5,7 @@ class Modal {
         document.body.appendChild(this.modalContainer);
 
         const contentContainer = document.createElement('div');
-        contentContainer.className = 'container';
+        contentContainer.className = 'mcontainer';
         this.modalContainer.appendChild(contentContainer);
 
         const closeButton = document.createElement('button');
