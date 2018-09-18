@@ -39,7 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$tekst = nl2br($tekst);
 			$date=date_create($id);
 			$date = date_format($date,"d-m-Y");
-		
+			// check om datoen findes
+			$fundet = false;
+			for ($i=2; $i < count($data); $i++) { 
+				if (strpos($data[$i], $id) > 0) {
+					$fundet = true;
+					break;
+				}
+			}
+			if ($fundet) {
+				$id = $id . "-2";
+			}
 			$html = '<div id="'.$id.'" class="arangement">
 			<div><h2>Dato: '.$date.'</h2></div>
 			<div class="overskrift"><h2>'.$overskrift.'</h2></div>';

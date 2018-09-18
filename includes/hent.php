@@ -1,19 +1,31 @@
 <?php 
 
 	require_once('../../sne/Lars.php');
-	
+	$filename = "lars.json";
 
 	if(isset($_POST['alle'])){
-		$filename = "lars.json";
-		if ($_POST['alle'] > "") {
+		
+		if ($_POST['alle'] == "alle") {
+			hent_alle($filename);
+		} else {
 			$fra = date("Y-m-d");
 			
 			filter_events();
-		} else {
-			hent_alle($filename);
+		} 
+	} 
+	if (isset($_POST['gem'])) {
+		$data = $_POST['data'];
+		file_put_contents($filename, $data);
+
+		// slet evt. deltager json 
+		$filename = "../events/" .$_POST['id'] . ".json";
+		if (file_exists($filename)) {
+			unlink($filename);
 		}
-	    
+		return "ok";
+		exit;
 	}
+
 
 	function hent_alle($filename) {
 	  	$fil = @file_get_contents($filename, true);

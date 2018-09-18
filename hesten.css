@@ -29,6 +29,11 @@ h2 {font-size: 1.3rem;}
 	margin-bottom: 10px;
 }
 
+.slet:hover {
+    cursor: pointer;
+    background-color: #e80606;
+}
+
 .arangement img {
 	display: block;
     margin-left: auto;
