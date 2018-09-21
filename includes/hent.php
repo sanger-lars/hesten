@@ -22,6 +22,14 @@
 		if (file_exists($filename)) {
 			unlink($filename);
 		}
+		// slet evt. billede
+		if ($_POST['billed_path'] > "") {
+			$filename = "../uploads/".$_POST['billed_path'];
+			if (file_exists($filename)) {
+				unlink($filename);
+			}
+		}
+		
 		return "ok";
 		exit;
 	}

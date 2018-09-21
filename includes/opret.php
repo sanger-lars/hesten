@@ -26,8 +26,8 @@
 	<div class="wrapper" style="border: 1px solid black;">
 		<h2>Opret en Begivenhed</h2>
 		<form method="POST" action="opload.php" enctype="multipart/form-data" accept="image/*" onchange="preview_image(event)">>
- 			<input type="file" name="myimage">
- 			<input type="submit" name="submit_image" value="Upload">
+ 			<input id="opret_file" type="file" name="myimage">
+ 			<input type="submit" id="opret_submit" name="submit_image" value="Upload">
 			<img id="output_image"/>
 			
 		</form>
@@ -37,7 +37,8 @@
 		<br>
 		<textarea name="tekst" id="tekst" placeholder="beskrivelse" align="center" rows="5" style="font-size: 1rem;"></textarea>
 		<br>
-		<button value="Upload File" id="opload" name="submit" style="font-size: 1.5rem; margin-left: 2%;">Gem</button>
+		<button value="Upload File" id="opload" name="submit" style="font-size: 1.5rem; margin-left: 2%; color: green;">Gem</button>
+		<button id="fortryd" style="font-size: 1.5rem; margin-left: 10%; color: red;">Fortryd</button>
 	</div>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

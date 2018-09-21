@@ -27,7 +27,7 @@ session_start();
 		<!-- <div id="ev201807061" class="arangement">
 			<div class="overskrift"><h2>Fredag 6/7 Karaoke på Hesten</h2></div>
 			<img src="uploads/karaoke_2018_7.jpg">Vi gør det igen! Kom til karaoke aften på Hesten fredag D. 6 juli kl 19! 😁🍺 Tag nogle venner med og syng en duet 💃
-			<div id="deltagere">Deltagere: 999 <a href="#" id ="deltag">Deltag</a> </div>
+			<div id="deltagere" style=""><span id="dtekst" style="">Deltagere: 999 </span><a style="" id ="deltag" ">Deltag</a></div>
 		</div>
 
 		<div id="evt201809071" class="arangement">
@@ -36,11 +36,11 @@ session_start();
 			<div id="deltagere">Deltagere: 999 <a href="#" id ="deltag">Deltag</a> </div>
 		</div> -->
 	</div>
-	<button onmousedown="klargor_slet()">slet</button>
+	<button onmousedown="klargor_slet()">Slet</button>
+	<button onmousedown="opret()">Opret begivenhed</button>
+
+	
 </div>
-
-
-
 
 </body>
 <script src="scripts/modal.js"></script>

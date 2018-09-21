@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			if ($billede === "true") {
 				$html = $html.'<img src="uploads/'.$img_nr.'">';
 			}
-			$html = $html . $tekst . '<div id="deltagere">Deltagere: '.$deltagere.' <a id ="deltag">Deltag</a> </div>
+			$html = $html . $tekst . '<div id="deltagere"><span id="dtekst">Deltagere: '.$deltagere.' </span> <a id ="deltag">Deltag</a> </div>
 			</div>';
 			   
 			/* <script type="text/javascript">

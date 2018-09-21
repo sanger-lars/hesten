@@ -2,9 +2,11 @@
 
 function streng_plus($streng, $plus_tal) {
 	$p1 = strpos($streng, "_");
-	$tal = substr($streng, $p1+1, 2) +$plus_tal;
-	if ($tal < 10) {$tal = "0" . $tal;}
-	$nyStreng = substr($streng, 0, $p1+1).$tal.substr($streng, $p1+3);
+	$tal = substr($streng, $p1+1, 3) +$plus_tal;
+	$nul_tal = $tal; 
+	if ($tal < 100) {$nul_tal = "0" . $tal;}
+	if ($tal < 10) {$nul_tal = "00" . $tal;}
+	$nyStreng = substr($streng, 0, $p1+1).$nul_tal.substr($streng, $p1+4);
 	return $nyStreng;
 }
 
@@ -18,7 +20,7 @@ $extend = substr($streng, $p1+1, 3);
 $jsondata = @file_get_contents("lars.json", true);
 if ($jsondata === false) {
 	$data = [];
-	$data[0] = "img_00";
+	$data[0] = "img_000";
 } else {
 	$data = json_decode($jsondata);
 }

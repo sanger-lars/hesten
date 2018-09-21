@@ -16,6 +16,7 @@ class Modal {
 
         this.content = document.createElement('div');
         contentContainer.appendChild(this.content);
+        this.pos = window.scrollY;
     }
 
     set html (value) {
@@ -27,7 +28,9 @@ class Modal {
     }
 
     close () {
+        window.scroll(0,this.pos);
         this.modalContainer.classList.remove('open');
+        this.modalContainer.remove();
     }
 }
 

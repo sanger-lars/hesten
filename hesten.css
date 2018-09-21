@@ -43,6 +43,11 @@ h2 {font-size: 1.3rem;}
 	padding-bottom: 5px;
 }
 
+#dtekst:hover {
+    cursor: pointer;
+    background-color: green;
+}
+
 form img {
     display: block;
     margin-left: auto;
@@ -57,7 +62,7 @@ form img {
 	display: block;
 }
 
-#deltag {
+#deltag, #mdeltag {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -70,7 +75,7 @@ form img {
 
 }
 
-#deltag:hover {background-color: #3b8f08;}
+#deltag:hover, #mdeltag:hover {background-color: #3b8f08;}
 
 #deltagere {
 	width: 300px;
@@ -86,8 +91,28 @@ textarea {
     margin-right: auto;
 }
 
+/*opret.php*/
 
+.--gul_knap {
+    background-color: yellow;
+}
 
+.--groen_knap {
+   background-color: green;
+}
+
+#opret_file {
+    font-size: .7rem;
+
+}
+
+#opret_submit {
+    font-size: 0.9rem;
+    margin-left: 1px;
+    margin-bottom: 10px;
+    height: 40px;
+}
+ 
 @media screen and (min-width: 668px) {
 	.wrapper  {
 		width: 500px;
@@ -102,12 +127,26 @@ textarea {
     margin-right: auto;
 	width: 40%;
 	height: auto;
-}
+    }
+
+    #opret_file {
+        font-size: 1.0rem;
+    }
+
+    #opret_submit {
+        font-size: 1.6rem;
+        margin-left: 7px;
+        margin-bottom: 10px;
+        height: 50px;
+    }
 }
 
 /*
     Modal styles
 */
+ul {
+    list-style: none;
+}
 
 .modal.open {
     display: flex;
@@ -118,6 +157,7 @@ textarea {
     position: fixed;
     justify-content: center;
     align-items: flex-start;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     top: 0;
     left: 0;
@@ -145,9 +185,13 @@ textarea {
     right: 0.5rem;
 }
 
+.--absolut {
+   position: absolute;
+}
+
 @media screen and (min-width: 668px) {
    .modal .mcontainer {
-    width: 35vw;
+    width: 25vw;
     padding: 2rem;
    } 
 }
