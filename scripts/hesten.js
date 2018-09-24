@@ -17,7 +17,7 @@ let c;
 let deltagere;
 
 function opret() {
-  window.location.replace("https://lars-f.dk/hesten/includes/opret.php");
+  window.location.replace("https://lars-f.dk/"+site+"/includes/opret.php"+zzz);
 }
 
 
@@ -50,7 +50,7 @@ function gem_deltagere(arr_id, data) {
   })
   .done(function (data) {
     alert("er hermed gemt");
-    window.location.replace("https://lars-f.dk/hesten/index.php"+zzz);
+    window.location.replace("https://lars-f.dk/"+site+"/"+zzz);
       
   })
   .fail(function (data) {
@@ -220,7 +220,7 @@ function slet_arangement(e) {
   }
   // redraw index.php
 
-  window.location.replace("https://lars-f.dk/hesten"+zzz);
+  window.location.replace("https://lars-f.dk/"+site+zzz);
   
 }
 
@@ -233,6 +233,8 @@ function IsJsonString(str) {
     return true;
 }
 
+klargor_skift_retning_klik();
+
 function klargor_deltag_klik() {
   const delta = document.querySelectorAll('#deltag');
   delta.forEach(delt => delt.addEventListener('mousedown', clikket)); 
@@ -241,6 +243,23 @@ function klargor_deltag_klik() {
 function klargor_vis_deltager_klik() {
   const vis = document.querySelectorAll('#dtekst');
   vis.forEach(delt => delt.addEventListener('mousedown', vis_deltagere)); 
+}
+
+function klargor_skift_retning_klik() {
+  const kom = document.getElementById('kommende');
+  kom.addEventListener('mousedown', tidligere_eller_kommende);
+}
+
+function tidligere_eller_kommende() {
+  if (fra == "kommende") {
+    fra = "tideligere";
+    document.getElementById('kommende').innerHTML = "<h1>Tidligere arrangementer</h1>";
+  }
+  else {
+    fra = "kommende";
+    document.getElementById('kommende').innerHTML = "<h1>Kommende arrangementer</h1>";
+  }
+  hent_tal_fra_DB(fra);
 }
 
 function hent_tal_fra_DB(fra, callback) {
@@ -274,7 +293,7 @@ function hent_tal_fra_DB(fra, callback) {
         klargor_vis_deltager_klik();    
       } // if slet
     } else {
-      her.insertAdjacentHTML('beforeend', "<h2>Der er ingen kommende arangementer</h2>");
+      her.insertAdjacentHTML('beforeend', "<h2>Der er ingen "+fra+" arangementer</h2>");
     } // if data = ""
   })
   .fail(function (data) {

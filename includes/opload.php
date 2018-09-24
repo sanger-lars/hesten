@@ -35,5 +35,5 @@ $folder="../uploads/";
 move_uploaded_file($_FILES["myimage"]["tmp_name"], "$folder" . $nyt_img_nr . "." . $extend);
 
  
-header("Location: ../includes/opret.php?" . $nyt_img_nr . "." . $extend);
+header("Location: ../includes/opret.php?" . $_POST['pass'] . "," . $nyt_img_nr . "." . $extend);
 exit();

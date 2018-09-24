@@ -84,7 +84,10 @@ h2 {font-size: 1.3rem;}
 	padding-bottom: 5px;
 }
 
-#dtekst:hover {
+#kommende {
+    background-color: white;
+}
+#dtekst:hover, #kommende {
     cursor: pointer;
     background-color: green;
 }

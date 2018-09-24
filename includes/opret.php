@@ -27,6 +27,7 @@
 		<h2>Opret en Begivenhed</h2>
 		<form method="POST" action="opload.php" enctype="multipart/form-data" accept="image/*" onchange="preview_image(event)">>
  			<input id="opret_file" type="file" name="myimage">
+ 			<input type="text" name="pass" id="pass" style="visibility: hidden;     width: 0px;">
  			<input type="submit" id="opret_submit" name="submit_image" value="Upload">
 			<img id="output_image"/>
 			
@@ -42,6 +43,7 @@
 	</div>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../scripts/site.js"></script>
 <script src="opret.js"></script>
 <script src="../scripts/upload.js"></script>
 <?php
