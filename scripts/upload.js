@@ -15,7 +15,7 @@ addEvent(document.getElementById('opload'), 'mousedown',
     if (confirm("vil du gemme arangementet ?")) {
        gem_i_DB(billede);
        alert("arangementet er gemt.");
-       window.location.replace("https://lars-f.dk/hesten2");
+       window.location.replace("https://lars-f.dk/hesten");
             //if (response.status === 200) {alert("filen er gemt "+response.json());}
            // else alert("fejl "+response.status);
     }

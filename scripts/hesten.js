@@ -2,6 +2,9 @@
 let slet = false;
 let fra = "kommende";
 const her = document.getElementById("lars");
+let zzz = "";
+zzz = window.location.search;
+
 
 var alle_data;
 
@@ -14,10 +17,30 @@ let c;
 let deltagere;
 
 function opret() {
-  window.location.replace("https://lars-f.dk/hesten2/includes/opret.php");
+  window.location.replace("https://lars-f.dk/hesten/includes/opret.php");
 }
 
 
+function check_para() {
+  if (zzz > "") {
+    var posting = $.post("includes/log.php", {
+      check: "true",
+      test: zzz.substring(1).toString()
+    })
+    .done(function (data) {
+      var tekst = JSON.parse(data);
+      const der = document.getElementById("logo");     
+      der.insertAdjacentHTML('beforeend', tekst);
+        
+    })
+    .fail(function (data) {
+      alert("fejl");
+    }); 
+    
+  }
+} // check_para
+
+check_para();
 
 function gem_deltagere(arr_id, data) {
   var posting = $.post("includes/arr.php", {
@@ -27,7 +50,7 @@ function gem_deltagere(arr_id, data) {
   })
   .done(function (data) {
     alert("er hermed gemt");
-    window.location.replace("https://lars-f.dk/hesten2/index.php");
+    window.location.replace("https://lars-f.dk/hesten/index.php"+zzz);
       
   })
   .fail(function (data) {
@@ -196,7 +219,8 @@ function slet_arangement(e) {
     
   }
   // redraw index.php
-  window.location.replace("https://lars-f.dk/hesten2/index.php");
+
+  window.location.replace("https://lars-f.dk/hesten"+zzz);
   
 }
 

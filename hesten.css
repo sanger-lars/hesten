@@ -10,6 +10,47 @@ h2 {font-size: 1.3rem;}
 	height: auto;
 }
 
+#MenuKnap {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 2rem;
+}
+
+#Menu {}
+
+#Menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+#Menu li button {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    border: .5px solid black;
+    color: white;
+    font-size: 1.5rem;
+    width: 250px;
+}
+
+/* Change the link color on hover */
+#Menu li button:hover {
+    background-color: #3b8f08;
+    cursor: pointer;
+}
+
+
+
 .wrapper {
 	padding: 5px;
 

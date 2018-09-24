@@ -19,7 +19,7 @@ session_start();
 <body>
 	
 <div class="wrapper">
-	<div class="logo">
+	<div class="logo" id="logo">
 		<img src="logo_lille.jpg" alt="Den Grønne Hest">	
 	</div>
 	<span class="tittel"><h1>Kommende arangementer</h1></span>
@@ -36,8 +36,8 @@ session_start();
 			<div id="deltagere">Deltagere: 999 <a href="#" id ="deltag">Deltag</a> </div>
 		</div> -->
 	</div>
-	<button onmousedown="klargor_slet()">Slet</button>
-	<button onmousedown="opret()">Opret begivenhed</button>
+	
+	
 
 	
 </div>

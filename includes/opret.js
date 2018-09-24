@@ -15,5 +15,5 @@ $("textarea").on("change", function(event){
 
 $("#fortryd").on("mousedown", function(e) {
 	e.preventDefault();
-	window.location.replace("https://lars-f.dk/hesten2/index.php");
+	window.location.replace("https://lars-f.dk/hesten/index.php");
 });
