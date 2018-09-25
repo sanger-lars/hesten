@@ -5,10 +5,11 @@ let billede = "false";
 
 
 zzz = window.location.search;
+debugger;
 if (zzz > "") {
 	zzz = zzz.substring(1);
 	zzz = zzz.split(',');
-	if (zzz.length == 2) {
+	if (zzz.length >= 2) {
 		document.getElementById("output_image").src = "../uploads/"+zzz[1];
 		billede = "true";
 		$("#opret_submit").toggleClass("--groen_knap");

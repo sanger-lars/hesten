@@ -24,7 +24,7 @@
 
 <section class="main-container">
 	<div class="wrapper" style="border: 1px solid black;">
-		<h2>Opret et arrangement</h2>
+		<h2>Ret/Opdater et arrangement</h2>
 		<form method="POST" action="opload.php" enctype="multipart/form-data" accept="image/*" onchange="preview_image(event)">>
  			<input id="opret_file" type="file" name="myimage">
  			<input type="text" name="pass" id="pass" style="visibility: hidden;     width: 0px;">
@@ -36,16 +36,16 @@
 		<br>
 		<input type="text" name="overskrift" id="input_overskrift" placeholder="Overskrift" style="font-size: 1.3rem; width: 95%; margin-left: 2%; margin-right: auto;">
 		<br>
-		<textarea name="tekst" id="tekst" placeholder="beskrivelse" align="center" rows="5" style="font-size: 1rem;"></textarea>
+		<textarea name="tekst" id="tekst" placeholder="beskrivelse" align="center" rows="10" style="font-size: 1rem;"></textarea>
 		<br>
-		<button value="Upload File" id="opload" name="submit" style="font-size: 1.5rem; margin-left: 2%; color: green;">Gem</button>
+		<button value="Upload File" id="opdater" name="submit" style="font-size: 1.5rem; margin-left: 2%; color: green;">Opdater</button>
 		<button id="fortryd" style="font-size: 1.5rem; margin-left: 10%; color: red;">Fortryd</button>
 	</div>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../scripts/site.js"></script>
-<script src="opret.js"></script>
-<script src="../scripts/upload.js"></script>
+<script src="ret.js"></script>
+<!-- <script src="../scripts/upload.js"></script>  -->
 <?php
 	
  ?>

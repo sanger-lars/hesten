@@ -75,6 +75,10 @@ h2 {font-size: 1.3rem;}
     background-color: #e80606;
 }
 
+.ret:hover {
+    cursor: pointer;
+    background-color: yellow;
+}
 .arangement img {
 	display: block;
     margin-left: auto;

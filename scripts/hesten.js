@@ -1,5 +1,5 @@
 //hesten.js
-let slet = false;
+let slet, ret = false;
 let fra = "kommende";
 const her = document.getElementById("lars");
 let zzz = "";
@@ -170,6 +170,11 @@ function klargor_slet() {
   hent_tal_fra_DB("alle");
 }
 
+function klargor_ret() {
+  ret = true;
+  hent_tal_fra_DB("alle");
+}
+
 function find_data(data, id) {
   for (var i = 2; i <= data.length - 1; i++) {
     if (data[i].indexOf(id) > 0) {
@@ -185,10 +190,9 @@ function slet_arangement(e) {
   var id = this.id;
   var nr = find_data(alle_data, id) 
   if (nr !== "false") {
-    console.log(alle_data[nr]);
     slet = false;
     svar_ja = false;
-    var svar_ja = confirm("vil du slette dette arangementet ?");
+    var svar_ja = confirm("vil du slette dette arrangement ?");
     if (svar_ja) {
       // find billedet
       c = this.children;
@@ -222,7 +226,56 @@ function slet_arangement(e) {
 
   window.location.replace("https://lars-f.dk/"+site+zzz);
   
-}
+}  // slet_arangement
+
+function ret_arr(e) {
+  // find id i lars.json
+  var id = this.id;
+  var nr = find_data(alle_data, id) 
+  if (nr !== "false") {
+    ret = false;
+    svar_ja = false;
+    var svar_ja = confirm("vil du rette dette arrangement ?");
+    if (svar_ja) {
+      // find billedet
+      c = this.children;
+      var i;
+      var b_path = "";
+      if (c[2].src === undefined) {
+        i = -1;
+        // intet billede
+      } else {
+        b_path = c[2].src.slice(-11);
+        i = 0;
+      }
+      
+      var overskrift = c[1].innerText;
+      var tekst = c[3+i].innerText;
+      var deltagere = c[4+i].innerText.substring(10,13);
+      window.location.replace('https://lars-f.dk/'+site+'/includes/ret.php'+zzz+
+        ','+b_path+','+nr);
+      
+      // slice array
+      // var slettet = alle_data.splice(nr,1);
+      // gem array
+/*      var json_data = JSON.stringify(alle_data);
+      var posting = $.post("includes/hent.php", {
+        gem: "true",
+        data: json_data,
+        id: id,
+        billed_path: b_path
+      })
+      .done(function (data) {
+        alert("arangementet er slettet");
+      })*/
+          
+    }
+    
+  }
+  // redraw index.php
+
+  //window.location.replace("https://lars-f.dk/"+site+zzz);
+} 
 
 function IsJsonString(str) {
     try {
@@ -288,10 +341,22 @@ function hent_tal_fra_DB(fra, callback) {
             var newClass = classString.concat(" slet"); // Adds the class "main__section" to the string (notice the leading space)
             divs[i].className = newClass;
         } 
+      } else if (ret) {
+        const delta = document.querySelectorAll('.arangement');
+        delta.forEach(delt => delt.addEventListener('mousedown', ret_arr));
+
+        // tilføj class 
+        var divs = document.querySelectorAll('.arangement'), i;
+
+        for (i = 0; i < divs.length; ++i) {
+            var classString = divs[i].className; // returns the string of all the classes for myDiv
+            var newClass = classString.concat(" ret"); // Adds the class "main__section" to the string (notice the leading space)
+            divs[i].className = newClass;
+        }
       } else {
         klargor_deltag_klik();
         klargor_vis_deltager_klik();    
-      } // if slet
+      }
     } else {
       her.insertAdjacentHTML('beforeend', "<h2>Der er ingen "+fra+" arangementer</h2>");
     } // if data = ""

@@ -30,10 +30,17 @@ $data[1] = $extend;
 $jsondata = json_encode($data);
 file_put_contents("lars.json", $jsondata);
 
-
+$para = json_decode($_POST['pass']);
+$nu = (string)$_POST['pass'];
+$nr = explode(",", $nu);
 $folder="../uploads/";
+
 move_uploaded_file($_FILES["myimage"]["tmp_name"], "$folder" . $nyt_img_nr . "." . $extend);
 
- 
-header("Location: ../includes/opret.php?" . $_POST['pass'] . "," . $nyt_img_nr . "." . $extend);
+if (count($nr) > 2) {
+	header("Location: ../includes/ret.php?" . $nr[0] . "," . $nyt_img_nr . "." . $extend . "," . $nr[2]);
+} else {
+	header("Location: ../includes/opret.php?" . $nr[0] . "," . $nyt_img_nr . "." . $extend);
+}
+
 exit();
