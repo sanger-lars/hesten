@@ -24,7 +24,7 @@
 
 <section class="main-container">
 	<div class="wrapper" style="border: 1px solid black;">
-		<h2>Ret/Opdater et arrangement</h2>
+		<h2>Ret/Opdater begivenhed</h2>
 		<form method="POST" action="opload.php" enctype="multipart/form-data" accept="image/*" onchange="preview_image(event)">>
  			<input id="opret_file" type="file" name="myimage">
  			<input type="text" name="pass" id="pass" style="visibility: hidden;     width: 0px;">

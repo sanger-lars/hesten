@@ -22,7 +22,7 @@ session_start();
 	<div class="logo" id="logo">
 		<img src="logo_lille.jpg" alt="Den Grønne Hest">	
 	</div>
-	<span class="tittel" id="kommende"><h1>Kommende arangementer</h1></span>
+	<span class="tittel" id="kommende"><h1>Kommende begivenheder</h1></span>
 	<div id="lars">
 		<!-- <div id="ev201807061" class="arangement">
 			<div class="overskrift"><h2>Fredag 6/7 Karaoke på Hesten</h2></div>

@@ -30,8 +30,8 @@
 			}
 		}
 		
-		return "ok";
-		exit;
+		echo "ok";
+		exit();
 	}
 
 

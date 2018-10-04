@@ -15,7 +15,7 @@ $upload_image=$_FILES[" myimage "][ "name " ];
 $streng = $_FILES["myimage"]["name"];
 
 $p1 = strpos($streng, ".");
-$extend = substr($streng, $p1+1, 3);
+$extend = strtolower(substr($streng, $p1+1, 3));
 
 $jsondata = @file_get_contents("lars.json", true);
 if ($jsondata === false) {
