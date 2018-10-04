@@ -1,6 +1,6 @@
 
 <?php 
-require_once('../../sne/Lars.php');
+
 ?>
 <head>
 	<meta charset="UTF-8">
