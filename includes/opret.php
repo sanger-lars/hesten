@@ -24,7 +24,8 @@
 
 <section class="main-container">
 	<div class="wrapper" style="border: 1px solid black;">
-		<h2>Opret begivenhed</h2>
+		<h2 class="tittel">Opret begivenhed</h2>
+		<div id="opload_ok" style="text-align: right; margin: 1rem 2.5rem;"></div>
 		<form method="POST" action="opload.php" enctype="multipart/form-data" accept="image/*" onchange="preview_image(event)">>
  			<input id="opret_file" type="file" name="myimage">
  			<input type="text" name="pass" id="pass" style="visibility: hidden;     width: 0px;">
@@ -32,6 +33,7 @@
 			<img id="output_image"/>
 			
 		</form>
+
 		<input type="date" name="date" id="date" placeholder="Dato" style="font-size: 1.3rem; margin-left: 2%;"> 
 		<br>
 		<input type="text" name="overskrift" id="input_overskrift" placeholder="Overskrift" style="font-size: 1.3rem; width: 95%; margin-left: 2%; margin-right: auto;">
@@ -44,8 +46,8 @@
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../scripts/site.js"></script>
-<script src="opret.js"></script>
-<script src="../scripts/upload.js"></script>
+<script src="opret_ny.js"></script>
+<script src="../scripts/upload_ny.js"></script>
 <?php
 	
  ?>

@@ -1,5 +1,4 @@
 <?php 
-require_once('../../sne/Lars.php');
 
 function streng_plus($streng, $plus_tal) {
 	$p1 = strpos($streng, "_");

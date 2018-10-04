@@ -180,11 +180,9 @@ function slet_arangement(e) {
       if (c[2].src === undefined) {
         // intet billede
       } else {
-        b_path = c[2].src.slice(-11);
+        b_path = c[2].src.slice(-6-11).substring(0,11);
       }
        
-      console.log(b_path);
-      debugger;
       // slice array
       var slettet = alle_data.splice(nr, 1);
       // gem array
@@ -226,7 +224,7 @@ function ret_arr(e) {
         i = -1;
         // intet billede
       } else {
-        b_path = c[2].src.slice(-11);
+        b_path = c[2].src.slice(-6-11).substring(0,11);
         i = 0;
       }
 
@@ -307,7 +305,12 @@ function hent_tal_fra_DB(fra, callback) {
       if (alle_data != null) {
         her.innerHTML = "";
         for (var t = 2; t < alle_data.length; t++) {
-          her.insertAdjacentHTML('beforeend', alle_data[t]);
+          var tekst = alle_data[t];
+          var p1 = tekst.indexOf('img_') + 11;
+          var tal = Math.floor(Math.random()* 9999 + 11111);
+          var nyHtml = tekst.substring(0,p1)+"?"+ tal+
+            tekst.substring(p1,tekst.length);
+          her.insertAdjacentHTML('beforeend', nyHtml);
         }
       }
       if (slet) {

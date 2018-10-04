@@ -14,12 +14,25 @@ var alle_data;
 
 xxx = window.location.search;
 if (xxx > "") {
-	debugger;
 	xxx = xxx.substring(1);
 	zzz = xxx.split(',');
 	if (zzz[1] !== "") {
-		document.getElementById("output_image").src = "../uploads/" + zzz[1];
+		var tal = Math.floor(Math.random()* 9999 + 11111);
+		document.getElementById("output_image").src = "../uploads/" + zzz[1]+"?"+tal;
 		billede = "true";
+		
+		$("#output_image").on("mousedown", function (e) {
+			e.preventDefault();
+			var posting = $.post("rotate.php", {
+				save: "true",
+				filnavn: "../uploads/" + zzz[1]
+			}).done(function (data){
+				window.location.reload();
+			}).fail(function(){
+				alert('error');
+			})
+		});
+
 		$("#opret_submit").toggleClass("--groen_knap");
 		$("#opload_ok").html("Billedet er uploadet");
 		//document.getElementById('opret_submit').classList.toggle('--groen_knap');

@@ -1,12 +1,12 @@
 <?php 
-session_start();
+
 ?>
 <!DOCTYPE html>
 
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Kommende arrangementer på Hesten</title>
@@ -44,6 +44,6 @@ session_start();
 
 </body>
 <script src="scripts/site.js"></script>
-<script src="scripts/modal.js"></script>
-<script src="scripts/hesten.js"></script>
+<script src="scripts/modal_ny.js"></script>
+<script src="scripts/ny_hesten.js"></script>
 </html>

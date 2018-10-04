@@ -1,5 +1,4 @@
 <?php 
-// require_once('../../sne/Lars.php');		
 
 function sorter_events() {
 	$jsondata = @file_get_contents("lars.json", true);

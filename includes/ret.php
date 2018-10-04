@@ -44,7 +44,7 @@
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../scripts/site.js"></script>
-<script src="ret.js"></script>
+<script src="ret_ny.js"></script>
 <!-- <script src="../scripts/upload.js"></script>  -->
 <?php
 	
