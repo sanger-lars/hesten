@@ -348,7 +348,8 @@ function hent_tal_fra_DB(fra, callback) {
         klargor_vis_deltager_klik();
       }
     } else {
-      her.insertAdjacentHTML('beforeend', "<h2>Der er ingen " + fra + " arangementer</h2>");
+      her.innerHTML = "";
+      her.insertAdjacentHTML('beforeend', '<h2 style="text-align: center;">Der er ingen ' + fra + ' begivenheder</h2>');
     } // if data = ""
   }).fail(function (data) {
     alert('hent fail');
